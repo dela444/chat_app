@@ -314,7 +314,8 @@ chat_app_fe/
 
 - **POST `/create-room`**: Create a new chat room.
   - **Description**: This endpoint allows a user to create a new chat room.
-  - **Request Body**: ```json
+  - **Request Body**:
+    ```json
     {
       "name": "string",
     }
