@@ -6,6 +6,8 @@ This is a real-time chat application built with Node.js, Express.js, React.js, S
 
 Additional features include rate limiting to prevent spamming, as well as the ability to display user online/offline status.
 
+Since Heroku discontinued its free tier, I deployed both the frontend and backend of my application on Vercel, with the database hosted on Supabase. However, Vercel has limitations regarding request execution time, particularly with Redis and sockets, but the application works smoothly in the local environment.
+
 ## Repositories
 
 This repository serves as the main overview for the chat application, which is split into two separate repositories:
