@@ -24,6 +24,7 @@ Setup instructions will be provided both in this repository and in the individua
 3. [Installation and Setup](#installation-and-setup)
 4. [Project Structure](#project-structure)
 5. [API Documentation](#api-documentation)
+6. [Database setup](#database-setup)
 
 
 ## Features
@@ -259,7 +260,7 @@ chat_app_fe/
 └── README.md
 ```
 
-### API Documentation
+## API Documentation
 
 - **POST `/auth/register`**: Register a new user.
   - **Description**: This endpoint allows a new user to register with a username and password.
@@ -366,6 +367,78 @@ Error messages follow a format:
   * `"fail"` indicates that the operation could not be completed (e.g., invalid input or failed request).
   * `"error"` indicates an internal server error or unexpected issue that needs attention.
 
+## Database Setup
 
+To set up the database, execute the following SQL commands:
+
+```sql
+create table if not exists chat_users
+(
+    id       serial
+        primary key,
+    username varchar not null
+        unique,
+    password varchar not null,
+    user_id  varchar not null
+        unique
+);
+
+create table if not exists chat_rooms
+(
+    id      serial
+        primary key,
+    name    varchar not null
+        unique,
+    room_id varchar not null
+        unique
+);
+
+create table if not exists messages
+(
+    id             serial
+        primary key,
+    content        varchar not null,
+    message_id     varchar not null
+        unique,
+    sender_id      varchar not null
+        constraint messages_chat_users_user_id_fk
+            references chat_users (user_id),
+    recipient_id   varchar not null,
+    creation_time  varchar not null,
+    recipient_type varchar not null
+);
+
+-- Insert initial users
+
+insert into chat_users (username, password, user_id) values
+('hamza', '$2b$10$CZiEiDEy2WOfrrAVODA0ReQ1wXp47KQWAKKo2kD9z1XZRTdADy.ue', '257c74fd-ba60-48a3-a7fd-80e76c65ef8f');
+
+insert into chat_users (username, password, user_id) values
+('delic', '$2b$10$V3jgiQgChJmxk3AF0ewntuOs/.IF/eFwHBcFzR13SdSRFxgDaNMf2', '8da54cf3-da93-42c8-a3b1-8debe0e064ca');
+
+-- Insert initial chat rooms
+
+insert into chat_rooms (name, room_id) values ('ChatRoom1', 'c5b7ba1c-9f25-4024-b6b5-af234f4975b0');
+
+insert into chat_rooms (name, room_id) values ('ChatRoom2', '3780623d-688c-424b-9fb6-d208798b6ed6');
+
+```
+### Initial Data Setup
+
+The following two initial users and two chat rooms have been created for easier testing of the application:
+
+#### Users:
+- **User 1**:
+  - Username: `hamza`
+  - Password: `hamzadelic`
+- **User 2**:
+  - Username: `delic`
+  - Password: `delichamza`
+
+### Chat Rooms:
+- **Room 1**: `ChatRoom1`
+- **Room 2**: `ChatRoom2`
+
+The passwords for the users are encrypted in the database, but the credentials provided above can be used to log in.
 
   
