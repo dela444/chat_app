@@ -8,6 +8,8 @@ Additional features include rate limiting to prevent spamming, as well as the ab
 
 Since Heroku discontinued its free tier, I deployed both the frontend and backend of my application on Vercel, with the database hosted on Supabase. However, Vercel has limitations regarding request execution time, particularly with Redis and sockets, but the application works smoothly in the local environment.
 
+In addition to the project description, I have also created a demo video providing a quick overview of the application. You can watch the demo video [here](https://youtu.be/Ii9fKDRG1-c).
+
 ## Repositories
 
 This repository serves as the main overview for the chat application, which is split into two separate repositories:
@@ -94,14 +96,58 @@ Make sure you have the following installed:
 
     cd chat_app_be
   ```
+2. **Update `package.json`:**
 
-3. **Install Dependencies:**
+Open the `package.json` file and change the `name` property from:
+
+```json
+   {
+    "name": "backend",
+    "version": "1.0.0",
+```
+To:
+
+```json
+   {
+    "name": "chat_app_be",
+    "version": "1.0.0",
+  }
+```
+
+3. **Update `package-lock.json`:**
+
+Open the `package-lock.json` file and change the `name` property from:
+
+```json
+  {
+    "name": "backend",
+    "version": "1.0.0",
+    "lockfileVersion": 2,
+    "requires": true,
+    "packages": {
+      "": {
+        "name": "backend",
+```
+To:
+
+```json
+  {
+    "name": "chat_app_be",
+    "version": "1.0.0",
+    "lockfileVersion": 2,
+    "requires": true,
+    "packages": {
+      "": {
+        "name": "chat_app_be",
+```
+
+4. **Install Dependencies:**
 
   ```bash
   npm install
   ```
 
-3. **Set Up Environment Variables:**
+5. **Set Up Environment Variables:**
 
    Create a `.env` file in the root of the backend directory and add the following environment variables:
    
@@ -119,9 +165,8 @@ DATABASE_TIMEOUT_MILLIS=30000
 REDIS_HOST=your_reds_host
 REDIS_PORT=your_redis_port
 REDIS_PASSWORD=your_redis_password
- ```
-
-4. **Start the Backend Server:**
+ ``` 
+6. **Start the Backend Server:**
  ```bash
   npm run dev
   ```
@@ -136,12 +181,61 @@ REDIS_PASSWORD=your_redis_password
     cd chat_app_fe
   ```
 
-2. **Install Dependencies:**
+2. **Update `package.json`:**
+
+Open the `package.json` file and change the `name` property from:
+
+```json
+   {
+    "name": "frontend",
+    "version": "0.1.0",
+    "private": true,
+  }
+```
+To:
+
+```json
+   {
+    "name": "chat_app_fe",
+    "version": "0.1.0",
+    "private": true,
+  }
+```
+
+3. **Update `package-lock.json`:**
+
+Open the `package-lock.json` file and change the `name` property from:
+
+```json
+   {
+    "name": "frontend",
+    "version": "0.1.0",
+    "lockfileVersion": 2,
+    "requires": true,
+    "packages": {
+      "": {
+        "name": "frontend",
+```
+
+To:
+
+```json
+   {
+    "name": "chat_app_fe",
+    "version": "0.1.0",
+    "lockfileVersion": 2,
+    "requires": true,
+    "packages": {
+      "": {
+        "name": "chat_app_fe",
+```
+
+4. **Install Dependencies:**
 
  ```bash
   npm install
   ```
-3. **Set Up Environment Variables:**
+5. **Set Up Environment Variables:**
 
    Create a `.env` file in the root of the backend directory and add the following environment variables:
    
@@ -150,7 +244,7 @@ REDIS_PASSWORD=your_redis_password
   REACT_APP_BACKEND_URL = 'http://localhost:5000'
   ```
  
-4. **Start the Frontend Server:**
+6. **Start the Frontend Server:**
 
  ```bash
   npm start
