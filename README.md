@@ -8,7 +8,12 @@ Additional features include rate limiting to prevent spamming, as well as the ab
 
 Since Heroku discontinued its free tier, I deployed both the frontend and backend of my application on Vercel, with the database hosted on Supabase. However, Vercel has limitations regarding request execution time, particularly with Redis and sockets, but the application works smoothly in the local environment.
 
+**Update**: To overcome the limitations encountered with Vercel, I have found a better solution by deploying the backend of the application on Render. This deployment has resolved the issues related to request execution time. You can access the live application here: [Chat Application Demo](https://chat-app-fe-seven.vercel.app).
+
 In addition to the project description, I have also created a demo video providing a quick overview of the application. You can watch the demo video [here](https://youtu.be/Ii9fKDRG1-c).
+
+
+
 
 ## Repositories
 
