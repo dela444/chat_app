@@ -6,14 +6,7 @@ This is a real-time chat application built with Node.js, Express.js, React.js, S
 
 Additional features include rate limiting to prevent spamming, as well as the ability to display user online/offline status.
 
-Since Heroku discontinued its free tier, I deployed both the frontend and backend of my application on Vercel, with the database hosted on Supabase. However, Vercel has limitations regarding request execution time, particularly with Redis and sockets, but the application works smoothly in the local environment.
-
-**Update**: To overcome the limitations encountered with Vercel, I have found a better solution by deploying the backend of the application on Render. This deployment has resolved the issues related to request execution time. You can access the live application here: [Chat Application Demo](https://chat-app-fe-seven.vercel.app).
-
 In addition to the project description, I have also created a demo video providing a quick overview of the application. You can watch the demo video [here](https://youtu.be/Ii9fKDRG1-c).
-
-
-
 
 ## Repositories
 
@@ -506,38 +499,4 @@ create table if not exists messages
     creation_time  varchar not null,
     recipient_type varchar not null
 );
-
--- Insert initial users
-
-insert into chat_users (username, password, user_id) values
-('hamza', '$2b$10$CZiEiDEy2WOfrrAVODA0ReQ1wXp47KQWAKKo2kD9z1XZRTdADy.ue', '257c74fd-ba60-48a3-a7fd-80e76c65ef8f');
-
-insert into chat_users (username, password, user_id) values
-('delic', '$2b$10$V3jgiQgChJmxk3AF0ewntuOs/.IF/eFwHBcFzR13SdSRFxgDaNMf2', '8da54cf3-da93-42c8-a3b1-8debe0e064ca');
-
--- Insert initial chat rooms
-
-insert into chat_rooms (name, room_id) values ('ChatRoom1', 'c5b7ba1c-9f25-4024-b6b5-af234f4975b0');
-
-insert into chat_rooms (name, room_id) values ('ChatRoom2', '3780623d-688c-424b-9fb6-d208798b6ed6');
-
 ```
-### Initial Data Setup
-
-The following two initial users and two chat rooms have been created for easier testing of the application:
-
-#### Users:
-- **User 1**:
-  - Username: `hamza`
-  - Password: `hamzadelic`
-- **User 2**:
-  - Username: `delic`
-  - Password: `delichamza`
-
-### Chat Rooms:
-- **Room 1**: `ChatRoom1`
-- **Room 2**: `ChatRoom2`
-
-The passwords for the users are encrypted in the database, but the credentials provided above can be used to log in.
-
-  
